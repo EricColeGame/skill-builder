@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Builder"
+  short_description: "Create standardized OpenClaw capability and orchestrator skills"
+  default_prompt: "Create an OpenClaw skill from the supplied business goal, inputs, process, workflow rules, and cron requirements."
