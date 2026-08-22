@@ -1,11 +1,11 @@
 ---
 name: skill-builder
-description: 根据业务目标、输入、过程、工作流规则和可选定时任务，创建或更新规范化的 OpenClaw 能力 Skill、单 Agent 编排 Skill 或多 Agent 编排 Skill。
+description: 根据业务目标、输入、过程、工作流规则和可选定时任务，创建或更新规范化的能力 Skill、单 Agent 编排 Skill 或多 Agent 编排 Skill。
 read_when:
   - 需要把已经跑通的脚本封装成能力 Skill
   - 需要创建单 Agent 或多 Agent 编排 Skill
   - 需要给 Skill 增加系统 crontab 定时入口
-metadata: {"openclaw":{"emoji":"🧱"}}
+metadata: {"skill-builder":{"emoji":"🧱"}}
 allowed-tools: Bash(skill-builder:*)
 ---
 
@@ -28,7 +28,7 @@ allowed-tools: Bash(skill-builder:*)
 ## 执行流程
 
 ```text
-创建或更新一个 OpenClaw Skill。
+创建或更新一个 Skill。
 
 参数：
 - 能力：${BUILDER_CAPABILITY}
@@ -64,7 +64,7 @@ allowed-tools: Bash(skill-builder:*)
 2. 有任务时，每个任务写入 /root/.openclaw/skills/${SKILL_NAME}/cron/<task-name>.sh；文件名使用任务语义。
 3. 入口脚本设置 export TZ='Asia/Shanghai'，只设置必要参数并调用一次已确定的任务入口。
 4. 服务器时区是 UTC；把上海时间换算成 UTC 后写入系统 crontab，注释标明上海时间。
-5. 日志重定向到 /root/.openclaw/logs/<task-name>.log，不使用 openclaw cron。
+5. 日志重定向到 /root/.openclaw/logs/<task-name>.log，不使用内置 cron。
 6. 中间数据写入当前 Skill 的 tmp/，禁止写入 /tmp/ 根目录。
 
 阶段 5：验证和汇报
